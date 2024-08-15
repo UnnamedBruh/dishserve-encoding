@@ -7,6 +7,7 @@
 	<ul>
 		<li><input type="checkbox" oninput="options.Pepper = this.checked"><a>Pepper</a></li>
 		<li><input type="checkbox" oninput="options.Apple = this.checked"><a>Apple</a></li>
+		<li><input type="checkbox" oninput="options.Apple = this.checked"><a>Apple</a></li>
 	</ul>
 </div>
 <div>
@@ -19,13 +20,13 @@
 			index++
 			return charset2.at(charset.indexOf(item) + ((index * 6 % 12) - 3))
 		})
-	}, Apple: function(target, isDecoding) {
-		const func = isDecoding == 0 ? function(match) {
-			return match.slice(1) + match[0]
-		} : function(match) {
-			return match[match.length - 1] + match.slice(0, -1)
-		}
-		return target.replace(/\w+/g, func)
+	}, Apple: function(target) {
+		return target.replace(/\w+/g, function(match) {
+			let text = match.slice("")
+			const temp = text.length - 1
+			[text[0], text[temp]] = [text[temp], text[0]]
+			return text.join("")
+		})
 	}}
 	const options = {Pepper: false, Apple: false, encode: 0}
 	function encode(text) {
