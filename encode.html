@@ -1,6 +1,6 @@
 <div>
-	<textarea id="encode"></textarea>
-	<button onclick="encode()">Encode!</button>
+	<textarea id="encodetext"></textarea>
+	<button onclick="encode(document.getElementById('encodetext').value)">Encode!</button>
 	<br>
 	<ul>
 		<li><input type="checkbox" oninput="options.Pepper = this.checked"><a>Pepper</a></li>
@@ -18,5 +18,10 @@
 		})
 	}}
 	const options = {Pepper: false}
-	
+	function encode(text) {
+		let result = text
+		const cache = 
+		for (const )
+		document.getElementById("result").textContent = result
+	}
 </script>
