@@ -2,6 +2,8 @@
 	<textarea id="encodetext"></textarea>
 	<button onclick="encode(document.getElementById('encodetext').value)">Encode!</button>
 	<br>
+	<input type="checkbox" oninput="options.encode = 0 + !this.checked" checked><a>Encode?</a>
+	<br>
 	<ul>
 		<li><input type="checkbox" oninput="options.Pepper = this.checked"><a>Pepper</a></li>
 		<li><input type="checkbox" oninput="options.Apple = this.checked"><a>Apple</a></li>
@@ -25,13 +27,13 @@
 		}
 		return target.replace(/\w+/g, func)
 	}}
-	const options = {Pepper: false, Apple: false}
+	const options = {Pepper: false, Apple: false, encode: 0}
 	function encode(text) {
 		let result = text
 		const cache = Object.keys(options)
 		for (const key of cache) {
 			if (options[key]) {
-				result = ingredients[key](result, 0)
+				result = ingredients[key](result, options.encode)
 			}
 		}
 		document.getElementById("result").textContent = result
