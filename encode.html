@@ -23,7 +23,7 @@
 		const func = isDecoding == 0 ? function(match) {
 			return match.slice(1) + match[0]
 		} : function(match) {
-			return match.slice(-1) + match[match.length - 1]
+			return match.slice(0, -1) + match[match.length - 1]
 		}
 		return target.replace(/\w+/g, func)
 	}}
