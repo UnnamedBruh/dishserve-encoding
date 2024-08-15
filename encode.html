@@ -7,7 +7,6 @@
 	<ul>
 		<li><input type="checkbox" oninput="options.Pepper = this.checked"><a>Pepper</a></li>
 		<li><input type="checkbox" oninput="options.Apple = this.checked"><a>Apple</a></li>
-		<li><input type="checkbox" oninput="options.Apple = this.checked"><a>Apple</a></li>
 	</ul>
 </div>
 <div>
@@ -23,8 +22,8 @@
 	}, Apple: function(target) {
 		return target.replace(/\w+/g, function(match) {
 			let text = match.slice("")
-			const temp = text.length - 1
-			[text[0], text[temp]] = [text[temp], text[0]]
+			const temp = text.length - 1;
+			[text[0], text[temp]] = [text[temp], text[0]];
 			return text.join("")
 		})
 	}}
