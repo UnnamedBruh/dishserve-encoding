@@ -1,0 +1,9 @@
+<script>
+	const ingredients = {Pepper: function(target, isDecoding) {
+		let index = -1 + isDecoding, charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		return target.replace(/[a-z]/i, function(item) {
+			index++
+			return charset.at(charset.indexOf(item) + ((index * 6 % 12) - 3))
+		})
+	}}
+</script>
