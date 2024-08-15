@@ -1,3 +1,11 @@
+<div>
+	<textarea id="encode"></textarea>
+	<br>
+	<input type="checkbox" oninput="options.Pepper = this.checked"><a>Pepper</a>
+</div>
+<div>
+	<pre id="result">result goes here</pre>
+</div>
 <script>
 	const ingredients = {Pepper: function(target, isDecoding) {
 		let index = -1 + isDecoding, charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -6,4 +14,6 @@
 			return charset.at(charset.indexOf(item) + ((index * 6 % 12) - 3))
 		})
 	}}
+	const options = {Pepper: false}
+	
 </script>
