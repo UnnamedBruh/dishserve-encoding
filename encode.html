@@ -32,7 +32,7 @@
 		let result = text
 		const cache = Object.keys(options)
 		for (const key of cache) {
-			if (options[key]) {
+			if (key === "encode") {} else if (options[key]) {
 				result = ingredients[key](result, options.encode)
 			}
 		}
