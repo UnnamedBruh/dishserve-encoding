@@ -14,7 +14,7 @@
 		let index = -1 + isDecoding, charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		return target.replace(/[a-z]/gi, function(item) {
 			index++
-			return charset.at((charset.indexOf(item) % 52) + ((index * 6 % 12) - 3))
+			return charset.at((charset.indexOf(item) + ((index * 6 % 12) - 3)) % 56)
 		})
 	}}
 	const options = {Pepper: false}
