@@ -20,8 +20,12 @@
 	const options = {Pepper: false}
 	function encode(text) {
 		let result = text
-		const cache = 
-		for (const )
+		const cache = Object.keys(options)
+		for (const key of cache) {
+			if (options[key]) {
+				result = ingredients[key](result, 0)
+			}
+		}
 		document.getElementById("result").textContent = result
 	}
 </script>
