@@ -16,18 +16,44 @@
 				money: "A penny's not strong against a rock, although it would be nice if money could be stronger than rock.",
 				water: "Water can't beat rock. It's not even strong enough to even destroy a rock.",
 				human: "A human being can't destroy a rock. If a human being bashes it on their skull, they could end up dying.",
-				tape: "I'm confident a tape can even get snapped if a rock falls heavily on the tape (middle of tape is mid-air).",
+				tape: "I'm confident a tape can get snapped if a rock falls heavily on the tape (middle of tape is mid-air).",
 				"shrink ray": "Sorry buddy, but cheesing isn't a part of this game... or is it?"
 			}
 		}
 	]
 	const input = document.getElementById("answer")
-	let guessedBefore = new Set(["rock"]), currentGuess = "rock"
+	let guessedBefore = new Set(["rock"]), currentGuess = "rock", length = 1
 	input.onkeydown = function(event) {
 		if (event.key == "Enter") {
 			input.value = String(input.value).toLowerCase().trim().replace(/(\s)+/, "$1")
-			if (!guessedBefore.has(input.value)) {
-				
+			guessedBefore.add(input)
+			if (guessedBefore.size !== length) {
+				length = guessedBefore.size
+				const ans = answers[currentGuess]
+				if (ans) {
+					const badchoice = ans.wrongChoices[input.value]
+					const correctAnswer = ans.answers[ans.choices.indexOf(input.value)]
+					if (badchoice) {
+						document.getElementById("whatbeats").textContent = input.value + " doesn't beat " + currentGuess
+						document.getElementById("subtitle").textContent = badchoice
+						input.disabled = true
+					} else {
+						if (correctAnswer) {
+							document.getElementById("whatbeats").textContent = input.value + " beats " + currentGuess
+							document.getElementById("subtitle").textContent = correctAnswer
+						} else {
+							document.getElementById("whatbeats").textContent = input.value + " doesn't beat " + currentGuess
+							document.getElementById("subtitle").textContent = ans.choices[ans.choices.length - 1]
+							input.disabled = true
+						}
+					}
+					currentGuess = input.value
+					input.value = ""
+				} else {
+					input.disabled = true
+					document.getElementById("whatbeats").textContent = "You reached an end to this game."
+					document.getElementById("subtitle").textContent = "Congrats."
+				}
 			} else {
 				alert("Sorry, but you can't repeat this.")
 			}
