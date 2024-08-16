@@ -21,8 +21,7 @@
 		})
 	}, Apple: function(target) {
 		return target.replace(/\w+/g, function(match) {
-			let text = match.split("")
-			const temp = text.length - 1
+			let text = match.split(""), temp = text.length - 1;
 			[text[0], text[temp]] = [text[temp], text[0]]
 			return text.join("")
 		})
