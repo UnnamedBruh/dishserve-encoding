@@ -49,13 +49,14 @@
 					}
 					currentGuess = input.value
 					input.value = ""
+					document.getElementById("score").textContent = "Score: " + guessedBefore.size
 				} else {
 					input.disabled = true
 					document.getElementById("whatbeats").textContent = "You reached an end to this game."
 					document.getElementById("subtitle").textContent = "Congrats."
 				}
 			} else {
-				alert("Sorry, but you can't repeat this.")
+				alert("Sorry, but you can't repeat that.")
 			}
 		}
 	}
