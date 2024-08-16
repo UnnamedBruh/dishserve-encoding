@@ -43,13 +43,13 @@
 							document.getElementById("subtitle").textContent = correctAnswer
 						} else {
 							document.getElementById("whatbeats").textContent = input.value + " doesn't beat " + currentGuess
-							document.getElementById("subtitle").textContent = ans.choices[ans.choices.length - 1]
+							document.getElementById("subtitle").textContent = ans.answers[ans.answers.length - 1]
 							input.disabled = true
 						}
 					}
 					currentGuess = input.value
 					input.value = ""
-					document.getElementById("score").textContent = "Score: " + guessedBefore.size
+					document.getElementById("score").textContent = "Score: " + (guessedBefore.size - 1)
 				} else {
 					input.disabled = true
 					document.getElementById("whatbeats").textContent = "You reached an end to this game."
