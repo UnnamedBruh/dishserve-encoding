@@ -1,8 +1,8 @@
 (function() {
 	const answers = {
 		rock: {
-			choices: ["paper", "sheet", "boulder", "foil", "rag", "black hole", "lava", "volcano", "zero", "moss"],
-			answers: ["Well, duh. Paper covers rock.", "Well, duh. A sheet of paper covers rock as well as paper.", "A boulder is bigger than a rock, so... why not?", "Puh-lease. Foil wraps around a rock with ease. Hey, that rhymes!", "A rag covers a rock. Who wouldn't know that?", "Oh, come on. A black hole sucks up *everything*.", "Lava is made up with really hot rock, so... yeah.", "Throw a rock in a volcano, and what do you get? Melted rock.", "You cheesed this, didn't you... 0 rocks are nothing...", "Moss does cover rock, and rock can't do anything about it. No offense, nature.", "Sorry, but that doesn't beat rock."],
+			choices: ["paper", "sheet", "boulder", "foil", "rag", "black hole", "lava", "volcano", "moss"],
+			answers: ["Well, duh. Paper covers rock.", "Well, duh. A sheet of paper covers rock as well as paper.", "A boulder is bigger than a rock, so... why not?", "Puh-lease. Foil wraps around a rock with ease. Hey, that rhymes!", "A rag covers a rock. Who wouldn't know that?", "Oh, come on. A black hole sucks up *everything*.", "Lava is made up with really hot rock, so... yeah.", "Throw a rock in a volcano, and what do you get? Melted rock.", "Moss does cover rock, and rock can't do anything about it. No offense, nature.", "Sorry, but that doesn't beat rock."],
 			wrongChoices: {
 				shotgun: "No gun can win against a rock, even if the bullet goes at a fricking 80 MPH.",
 				nothing: "It sure sucks to be nothing. It's good you're someting, to be honest.",
@@ -23,7 +23,8 @@
 				you: "Who is 'you'? Is that you playing the game, or someone else?",
 				vaporizer: "You can't vaporize anything with made-up tools.",
 				"your mom": "Oh, you did not just say that!",
-				"yo mom": "You didn't just say that! Also, no more 'yo mama' jokes. The jokes are dead."
+				"yo mom": "You didn't just say that! Also, no more 'yo mama' jokes. The jokes are dead.",
+				zero: "AHA! UnnamedBruh patched this cheat! Finally..."
 			}
 		},
 		paper: {
@@ -63,8 +64,16 @@
 		},
 		zero: {
 			choices: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven"],
-			answers: ["One is greater than zero.", "Two is greater than zero.", "Three is greater than zero.", "Four is greater than zero.", "Five is greater than zero."],
+			answers: ["One is greater than zero.", "Two is greater than zero.", "Three is greater than zero.", "Four is greater than zero.", "Five is greater than zero.", "Six is greater than zero.", "Seven is greater than zero.", "Eight is greater than zero.", "Nine is greater than zero.", "Ten is greater than zero.", "Eleven is greater than zero."],
 			wrongChoices: {} // unfinished
+		},
+		"black hole": {
+			choices: [],
+			answers: ["That was a big mistake... NOTHING, and I mean NOTHING, can beat a black hole, HAHAHA!"],
+			wrongChoices: {}
+		},
+		rust: {
+			choices: ["bleach"]
 		}
 	}
 	const input = document.getElementById("answer")
@@ -85,7 +94,7 @@
 						input.disabled = true
 					} else {
 						if (correctAnswer) {
-							document.getElementById("whatbeats").textContent = input.value + " beats " + currentGuess
+							document.getElementById("whatbeats").textContent = input.value + " beats " + currentGuess + ". What beats " + input.value + "?"
 							document.getElementById("subtitle").textContent = correctAnswer
 						} else {
 							document.getElementById("whatbeats").textContent = input.value + " doesn't beat " + currentGuess
