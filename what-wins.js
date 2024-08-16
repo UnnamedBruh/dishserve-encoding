@@ -26,7 +26,7 @@
 	input.onkeydown = function(event) {
 		if (event.key == "Enter") {
 			input.value = String(input.value).toLowerCase().trim().replace(/(\s)+/, "$1")
-			guessedBefore.add(input)
+			guessedBefore.add(input.value)
 			if (guessedBefore.size !== length) {
 				length = guessedBefore.size
 				const ans = answers[currentGuess]
