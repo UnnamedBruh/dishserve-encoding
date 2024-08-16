@@ -17,7 +17,19 @@
 				water: "Water can't beat rock. It's not even strong enough to even destroy a rock.",
 				human: "A human being can't destroy a rock. If a human being bashes it on their skull, they could end up dying.",
 				tape: "I'm confident a tape can get snapped if a rock falls heavily on the tape (middle of tape is mid-air).",
-				"shrink ray": "Sorry buddy, but cheesing isn't a part of this game... or is it?"
+				"shrink ray": "Sorry buddy, but cheesing isn't a part of this game... or is it?",
+				gun: "Sorry deputy, but guns don't work on rocks.",
+				"": "Are you speechless? I'm sorry if this was too hard to solve, but I'm not responsible for your lack of knowledge.",
+				you: "Who is 'you'? Is that you playing the game, or someone else?",
+				vaporizer: "You can't vaporize anything with made-up tools."
+			}
+		},
+		paper: {
+			choices: ["scissors", "fire", "pencil", "tear", "rip", "shotgun", "hook", "human", "flamethrower"],
+			answers: ["Scissors cuts paper. I don't know what to say here.", "Paper is flammable, so fire wins this round.", "A pencil can write on paper, so... yeah.", "Paper is weak, and it is tearable.", "Tears work, but rips also work as well.", "When a shotgun fires at a piece of paper, the bullets tear through the paper.", "A hook can be used to tear apart paper, because their edge is sharp.", "A person/human can rip and tear this paper.", "A flamethrower can burn the paper into smithereens.", "That object can't beat paper. Sorry!"],
+			wrongChoices: {
+				you: "To be honest, who is 'you'? That's going to be one question to solve.",
+				"shrink ray": "Are you just trying to lose on purpose, or are you trying to cheese this game?"
 			}
 		}
 	}
