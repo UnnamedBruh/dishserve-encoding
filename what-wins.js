@@ -20,7 +20,7 @@
 				"shrink ray": "Sorry buddy, but cheesing isn't a part of this game... or is it?"
 			}
 		}
-	]
+	}
 	const input = document.getElementById("answer")
 	let guessedBefore = new Set(["rock"]), currentGuess = "rock", length = 1
 	input.onkeydown = function(event) {
