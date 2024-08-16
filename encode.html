@@ -7,7 +7,6 @@
 	<ul>
 		<li><input type="checkbox" oninput="options.Pepper = this.checked"><a>Pepper</a></li>
 		<li><input type="checkbox" oninput="options.Apple = this.checked"><a>Apple</a></li>
-		<li><input type="checkbox" oninput="options.Carrot = this.checked"><a>Carrot</a></li>
 	</ul>
 </div>
 <div>
@@ -27,13 +26,8 @@
 			[text[0], text[temp]] = [text[temp], text[0]]
 			return text.join("")
 		})
-	}, Carrot: function(target) {
-		const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-		return target.replace(/[a-z]/gi, function(match) {
-			return charset.indexOf(match)
-		})
 	}}
-	const options = {Pepper: false, Apple: false, Carrot: false, encode: 0}
+	const options = {Pepper: false, Apple: false, encode: 0}
 	function encode(text) {
 		let result = text
 		const cache = Object.keys(options)
