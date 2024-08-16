@@ -21,11 +21,13 @@
 				gun: "Sorry deputy, but guns don't work on rocks.",
 				"": "A blank text doesn't beat anything. It's just not an object.",
 				you: "Who is 'you'? Is that you playing the game, or someone else?",
-				vaporizer: "You can't vaporize anything with made-up tools."
+				vaporizer: "You can't vaporize anything with made-up tools.",
+				"your mom": "Oh, you did not just say that!",
+				"yo mom": "You didn't just say that! Also, no more 'yo mama' jokes. The jokes are dead."
 			}
 		},
 		paper: {
-			choices: ["scissors", "fire", "pencil", "tear", "rip", "shotgun", "hook", "human", "flamethrower", "paper"],
+			choices: ["scissors", "fire", "pencil", "tear", "rip", "shotgun", "hook", "human", "flamethrower"],
 			answers: ["Scissors cuts paper. I don't know what to say here.", "Paper is flammable, so fire wins this round.", "A pencil can write on paper, so... yeah.", "Paper is weak, and it is tearable.", "Tears work, but rips also work as well.", "When a shotgun fires at a piece of paper, the bullets tear through the paper.", "A hook can be used to tear apart paper, because their edge is sharp.", "A person/human can rip and tear this paper.", "A flamethrower can burn the paper into smithereens.", "That object can't beat paper. Sorry!"],
 			wrongChoices: {
 				you: "To be honest, who is 'you'? That's going to be one question to solve.",
@@ -42,7 +44,7 @@
 			choices: ["rust", "paper shredder", "metal", "glue", "hot glue gun", "diamond", "hook", "water"],
 			answers: ["Metal rusts over time, including the scissor blades!", "The scissors may be immune to paper, but a paper shredder? Hell if it is!", "Metal is stronger than the scissors blades!", "Glue can definitely put scissors in a 'sticky' situation! :trollface:", "Hot glue can put scissors in a much 'stickier' situation! :trollface:", "Diamonds can definitely win against scissors! Scissors can't cut diamond.", "3... 2... 1... GO! The hook grabs the scissors... AND TOSSES THE SCISSORS ONTO THE GROUND! K.O.!", "If you dump water on paper, you can't write on it anymore.", "I would say no to whatever that object is, since it doesn't win against scissors!"],
 			wrongChoices: {
-				you: "'Hey, Vsauce Michael here. Today, we're going to look at the question: \"Who is *you*\"? Well, \"you\" is a being that means the person being talked to by another person...'",
+				you: "'Hey, Vsauce Michael here. Today, we're going to look at the question: \"What is *you*\"? Well, \"you\" is a person that is the person being talked to by another person when the term is used in their sentence, so that means if...'",
 				"shrink ray": "Shrink rays don't exist in reality. It's impossible. Also, don't cheese this game!",
 				"": "A blank text has no value, nor does it have any appearance. Scissors sits there, and scissors win.",
 				vaporizer: "Made-up tools aren't allowed in this game, according to my rules of 'What Beats Rock' on page 18... it says 'This means that players *cannot make up certain items that are not in real life* to win the game, so if they do, they lose.' Now you know why?",
@@ -58,6 +60,11 @@
 				"do not \"don't no me\" me": "Oh yeah? What if I do it again?",
 				"do not \"do not no me\" me": "Oh yeah? Also, that's not what I exactly said."
 			}
+		},
+		zero: {
+			choices: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven"],
+			answers: ["One is greater than zero.", "Two is greater than zero.", "Three is greater than zero.", "Four is greater than zero.", "Five is greater than zero."],
+			wrongChoices: {} // unfinished
 		}
 	}
 	const input = document.getElementById("answer")
