@@ -7,6 +7,7 @@
 	<ul>
 		<li><input type="checkbox" oninput="options.Pepper = this.checked"><a>Pepper</a></li>
 		<li><input type="checkbox" oninput="options.Apple = this.checked"><a>Apple</a></li>
+		<li><input type="checkbox" oninput="options.Carrot = this.checked"><a>Carrot</a></li>
 	</ul>
 </div>
 <div>
@@ -25,8 +26,28 @@
 			[text[0], text[temp]] = [text[temp], text[0]]
 			return text.join("")
 		})
+	}, Carrot: function(target, isDecoding) {
+		let encodingStart = ""
+		let index = -1
+		let encodingSymbols = ["@", "#", "$", "%", "&"].filter(item => !target.includes(item))
+		let chosen = {}
+		let result = target.replace(/[a-z]/gi, function(item) {
+			if (Math.random() > 0.9) {
+				index++
+				const it = encodingSymbols[index]
+				encodingStart += `${(encodingStart !== "" ? "," : "")}${it}${"=" + item}`
+				chosen[item] = it
+			}
+			const gotIt = chosen[item]
+			if (gotIt) {
+				return gotIt
+			}
+			return item
+		})
+		encodingStart += "::"
+		return encodingStart + result
 	}}
-	const options = {Pepper: false, Apple: false, encode: 0}
+	const options = {Pepper: false, Apple: false, Carrot: false, encode: 0}
 	function encode(text) {
 		let result = text
 		const cache = Object.keys(options)
