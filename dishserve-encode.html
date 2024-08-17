@@ -52,7 +52,7 @@
 		let chosenLetters = new Set([])
 		let result = target.replace(/[a-z]/gi, function(item) {
 			if (Math.random() > 0.6) {
-				if (!chosenLetters.has(item)) {
+				if (!chosenLetters.has(item) && index < encodingSymbols.size) {
 					index++
 					const it = [...encodingSymbols][index]
 					encodingStart += `${(encodingStart !== "" ? "," : "")}${it}${"=" + item}`
