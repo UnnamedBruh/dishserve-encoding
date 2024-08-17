@@ -29,14 +29,18 @@
 	}, Carrot: function(target, isDecoding) {
 		let encodingStart = ""
 		let index = -1
-		let encodingSymbols = ["@", "#", "$", "%", "&"].filter(item => !target.includes(item))
+		let encodingSymbols = new Set(["@", "#", "$", "%", "&", "<", ">", "~", "|", "[", "]", "{", "}", "(", ")"].filter(item => !target.includes(item)))
 		let chosen = {}
+		let chosenLetters = new Set([])
 		let result = target.replace(/[a-z]/gi, function(item) {
-			if (Math.random() > 0.9) {
-				index++
-				const it = encodingSymbols[index]
-				encodingStart += `${(encodingStart !== "" ? "," : "")}${it}${"=" + item}`
-				chosen[item] = it
+			if (Math.random() > 0.6) {
+				if (!chosenLetters.has(item)) {
+					index++
+					const it = encodingSymbols.get(index)
+					encodingStart += `${(encodingStart !== "" ? "," : "")}${it}${"=" + item}`
+					chosen[item] = it
+					chosenLetters.add(item)
+				}
 			}
 			const gotIt = chosen[item]
 			if (gotIt) {
