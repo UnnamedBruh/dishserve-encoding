@@ -47,12 +47,12 @@
 		}
 		let encodingStart = ""
 		let index = -1
-		let encodingSymbols = new Set(["@", "#", "$", "%", "&", "<", ">", "~", "|", "[", "]", "{", "}", "(", ")"].filter(item => !target.includes(item)))
+		let encodingSymbols = new Set(["@", "#", "$", "%", "^", "&", "*", "<", ">", "~", "|", "[", "]", "{", "}", "(", ")", ";", "\\", "/", "`", "-", "_", "+", "="].filter(item => !target.includes(item)))
 		let chosen = {}
 		let chosenLetters = new Set([])
 		let result = target.replace(/[a-z]/gi, function(item) {
 			if (Math.random() > 0.6) {
-				if (!chosenLetters.has(item) && index < encodingSymbols.size) {
+				if (!chosenLetters.has(item) && index + 1 < encodingSymbols.size) {
 					index++
 					const it = [...encodingSymbols][index]
 					encodingStart += `${(encodingStart !== "" ? "," : "")}${it}${"=" + item}`
