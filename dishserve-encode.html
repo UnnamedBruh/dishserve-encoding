@@ -27,6 +27,36 @@
 			return text.join("")
 		})
 	}, Carrot: function(target, isDecoding) {
+		if (isDecoding === 1) {
+			let keys = {}
+			let doneCollectingKeys = false
+			return target.replace(/.=.(,?)|::|./g, function(match) {
+				if (!doneCollectingKeys) {
+					if (match[1] === "=") {
+						keys[match[0]] = match[2]
+					} else if (match === "::") {
+						doneCollectingKeys = true
+					}
+					return ""
+				} else {
+					if (match.length == 1) {
+						const result = keys[match]
+						if (result) {
+							return result
+						}
+						return match
+					} else {
+						return match.replace(/./g, function(match) {
+							const result = keys[match]
+							if (result) {
+								return result
+							}
+							return match
+						})
+					}
+				}
+			})
+		}
 		let encodingStart = ""
 		let index = -1
 		let encodingSymbols = new Set(["@", "#", "$", "%", "&", "<", ">", "~", "|", "[", "]", "{", "}", "(", ")"].filter(item => !target.includes(item)))
