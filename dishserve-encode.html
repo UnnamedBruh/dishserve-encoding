@@ -14,19 +14,7 @@
 	<pre id="result">result goes here</pre>
 </div>
 <script>
-	const ingredients = {Pepper: function(target, isDecoding) {
-		let index = -1 + isDecoding, charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", charset2 = charset.repeat(2)
-		return target.replace(/[a-z]/gi, function(item) {
-			index++
-			return charset2.at(charset.indexOf(item) + ((index * 6 % 12) - 3))
-		})
-	}, Apple: function(target) {
-		return target.replace(/\w+/g, function(match) {
-			let text = match.split(""), temp = text.length - 1;
-			[text[0], text[temp]] = [text[temp], text[0]]
-			return text.join("")
-		})
-	}, Carrot: function(target, isDecoding) {
+	const ingredients = {Carrot: function(target, isDecoding) {
 		if (isDecoding === 1) {
 			let keys = {}
 			let doneCollectingKeys = false
@@ -80,8 +68,20 @@
 		})
 		encodingStart += "::"
 		return encodingStart + result
+	}, Pepper: function(target, isDecoding) {
+		let index = -1 + isDecoding, charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", charset2 = charset.repeat(2)
+		return target.replace(/[a-z]/gi, function(item) {
+			index++
+			return charset2.at(charset.indexOf(item) + ((index * 6 % 12) - 3))
+		})
+	}, Apple: function(target) {
+		return target.replace(/\w+/g, function(match) {
+			let text = match.split(""), temp = text.length - 1;
+			[text[0], text[temp]] = [text[temp], text[0]]
+			return text.join("")
+		})
 	}}
-	const options = {Pepper: false, Apple: false, Carrot: false, encode: 0}
+	const options = {Carrot: false, Pepper: false, Apple: false, encode: 0}
 	function encode(text) {
 		let result = text
 		const cache = Object.keys(options)
