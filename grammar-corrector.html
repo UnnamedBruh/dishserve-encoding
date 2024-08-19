@@ -17,7 +17,7 @@
 			"I'm": /^[i98ujko](?:['";:.>,</?\]}\[{|]?)[mkjn,<]$/i
 		}
 		const keys = Object.keys(words)
-		return text.replace(/\w+/, function(match) {
+		return text.replace(/\w+/g, function(match) {
 			for (const word of keys) {
 				if (words[word].test(match)) {
 					return word
