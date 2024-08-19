@@ -16,8 +16,9 @@
 			"can't": /^[cfdx v][awqsz][njhb m](?:['";:.>,</?\]}\[{|]?)[t65rfgy]$/i,
 			"I'm": /^[i98ujko](?:['";:.>,</?\]}\[{|]?)[mkjn,<]$/i
 		}
+		const keys = Object.keys(words)
 		return text.replace(/\w+/, function(match) {
-			for (const word of words) {
+			for (const word of keys) {
 				if (words[word].test(match)) {
 					return word
 				}
