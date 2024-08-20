@@ -1,32 +1,42 @@
 <h1>Simple Grammar Corrector</h1>
 <textarea id="text"></textarea>
-<button onclick="var input = document.getElementById('text').value; document.getElementById('text').value = correct(input)">Correct!</button>
+<button onclick="correctText()">Correct!</button>
+
 <script>
 	function correct(text) {
 		const words = {
-			"hello": /^[hjyg][erdsw34]([.,kop;lw<>:]{1-2})[o90iklp]$/i,
+			"hello": /^[hjyg][erdsw34][o90iklp]$/i,
 			"hi": /^[hjyg][iujko98]$/i,
-			"how": /^[hjyg][o09iklp][wqase32]$/i,
+			"how": /^[hjygbnu][o09iklp][wqase32]$/i,
 			"are": /^[aqwsz][rt54edf][e34rdsw]$/i,
 			"you": /^[y76tghu][o09iklp][u87yhji]$/i,
 			"I": /^[i98ujko]$/i,
 			"love": /^[l;pok,.<>:][o09iklp][vgfc b][e43wsdr]$/i,
-			"apple": /^[awqzs]([p\[\-0ol;]{1-2})[lpok,.;:<>][e43swrd]$/i,
+			"apple": /^[awqzs][p0ol;][lpok,.;:<>][e43swrd]$/i,
 			"and": /^[aqwsz][njhb m][dresxcf]$/i,
-			"can't": /^[cfdx v][awqsz][njhb m](?:['";:.>,</?\]}\[{|]?)[t65rfgy]$/i,
-			"I'm": /^[i98ujko](?:['";:.>,</?\]}\[{|]?)[mkjn,<]$/i
-		}
-		const keys = Object.keys(words)
-		return (text[0].toUpperCase() + text.slice(1)).replace(/\w+/g, function(match) {
-			for (const word of keys) {
-				if (words[word].test(match)) {
-					return word
+			"can't": /^[cfdx v][awqsz][njhb m][';:.]?[t65rfgy]$/i,
+			"I'm": /^[i98ujko][';:.]?[mkjn,<]$/i
+		};
+
+		const keys = Object.keys(words);
+		return (text[0].toUpperCase() + text.slice(1))
+			.replace(/\w+/g, function(match) {
+				for (const word of keys) {
+					if (words[word].test(match)) {
+						return word;
+					}
 				}
-			}
-			return match
-		}).replace(/  /g, " ").replace(/[.!?] (\w+)/g, function(match, word1, word2) {
-			const word = word1 || word2
-			return match.slice(0, 2) + word[0].toUpperCase() + word.slice(1)
-		})
+				return match;
+			})
+			.replace(/\s{2,}/g, " ")
+			.replace(/([.!?])\s+(\w+)/g, function(match, punctuation, word) {
+				return punctuation + " " + word[0].toUpperCase() + word.slice(1);
+			});
+	}
+
+	function correctText() {
+		const input = document.getElementById('text').value;
+		const corrected = correct(input);
+		document.getElementById('text').value = corrected;
 	}
 </script>
