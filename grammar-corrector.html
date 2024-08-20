@@ -4,17 +4,17 @@
 <script>
 	function correct(text) {
 		const words = {
-			"hello": /^[hjyg][erdsw34]([.,kop;lw<>:]{1-2})[o90iklp]$/i,
-			"hi": /^[hjyg][iujko98]$/i,
-			"how": /^[hjyg][o09iklp][wqase32]$/i,
-			"are": /^[aqwsz][rt54edf][e34rdsw]$/i,
-			"you": /^[y76tghu][o09iklp][u87yhji]$/i,
-			"I": /^[i98ujko]$/i,
-			"love": /^[l;pok,.<>:][o09iklp][vgfc b][e43wsdr]$/i,
-			"apple": /^[awqzs]([p\[\-0ol;]{1-2})[lpok,.;:<>][e43swrd]/i,
-			"and": /^[aqwsz][njhb m][dresxcf]$/i,
-			"can't": /^[cfdx v][awqsz][njhb m](?:['";:.>,</?\]}\[{|]?)[t65rfgy]$/i,
-			"I'm": /^[i98ujko](?:['";:.>,</?\]}\[{|]?)[mkjn,<]$/i
+			"hello": /[hjyg][erdsw34]([.,kop;lw<>:]{1-2})[o90iklp]/i,
+			"hi": /[hjyg][iujko98]/i,
+			"how": /[hjyg][o09iklp][wqase32]/i,
+			"are": /[aqwsz][rt54edf][e34rdsw]/i,
+			"you": /[y76tghu][o09iklp][u87yhji]/i,
+			"I": /[i98ujko]/i,
+			"love": /[l;pok,.<>:][o09iklp][vgfc b][e43wsdr]/i,
+			"apple": /[awqzs]([p\[\-0ol;]{1-2})[lpok,.;:<>][e43swrd]/i,
+			"and": /[aqwsz][njhb m][dresxcf]/i,
+			"can't": /[cfdx v][awqsz][njhb m](?:['";:.>,</?\]}\[{|]?)[t65rfgy]/i,
+			"I'm": /[i98ujko](?:['";:.>,</?\]}\[{|]?)[mkjn,<]/i
 		}
 		const keys = Object.keys(words)
 		return text.replace(/\w+/g, function(match) {
@@ -26,7 +26,7 @@
 			return match
 		}).replace(/  /g, " ").replace(/[.!?] (\w+)|^(\w+)/g, function(match, word1, word2) {
 			const word = word1 || word2
-			return match[0] + word[0].toUpperCase() + word.slice(1)
+			return match.slice(0, 2) + word[0].toUpperCase() + word.slice(1)
 		})
 	}
 </script>
