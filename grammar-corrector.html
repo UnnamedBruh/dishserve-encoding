@@ -17,7 +17,7 @@
 			"I'm": /^[i98ujko](?:['";:.>,</?\]}\[{|]?)[mkjn,<]$/i
 		}
 		const keys = Object.keys(words)
-		return (text[0].toUpperCase() + text.slice(1)).text.replace(/\w+/g, function(match) {
+		return (text[0].toUpperCase() + text.slice(1)).replace(/\w+/g, function(match) {
 			for (const word of keys) {
 				if (words[word].test(match)) {
 					return word
