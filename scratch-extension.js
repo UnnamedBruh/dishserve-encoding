@@ -126,7 +126,7 @@
 			return !(A || B)
 		}
 		xor({A, B}) {
-			return !(A ^ B)
+			return (A ^ B) === 1
 		}
 		xnor({A, B}) {
 			return (A ^ B) === 0
