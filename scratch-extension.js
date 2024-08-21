@@ -101,6 +101,17 @@
 								type: Scratch.ArgumentType.NUMBER
 							}
 						}
+					},
+					'---',
+					{
+						opcode: "typeof",
+						blockType: Scratch.BlockType.REPORTER,
+						text: "type of [A]",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.STRING
+							}
+						}
 					}
 				],
 				menus: {
@@ -120,16 +131,28 @@
 			return Math.pow(Scratch.Cast.toNumber(A), Scratch.Cast.toNumber(B))
 		}
 		nand({A, B}) {
-			return !(A && B)
+			return !(A & B)
 		}
 		nor({A, B}) {
-			return !(A || B)
+			return !(A | B)
 		}
 		xor({A, B}) {
 			return (A ^ B) === 1
 		}
 		xnor({A, B}) {
 			return (A ^ B) === 0
+		}
+		typeof(args) {
+			const isJSON = (function() {
+				try {
+					JSON.parse(A)
+					return true
+				} catch {
+					return false
+				}
+			})()
+			const A = String(args.A)
+			return (this.boolean(A) && new Set([4,5]).has(A.length)) ? "boolean" : /^\d*(\.\d*?)$/.test(A) ? "number" : Array.isArray(A) ? "array" : isJSON ? "json" : "string"
 		}
 	}
 	Scratch.extensions.register(new Extension())
