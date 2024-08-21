@@ -14,13 +14,13 @@
 						text: "if [A] then [B] else [C]",
 						arguments: {
 							A: {
-								type: Scratch.BlockType.BOOLEAN
+								type: Scratch.ArgumentType.BOOLEAN
 							},
 							B: {
-								type: Scratch.BlockType.STRING
+								type: Scratch.ArgumentType.STRING
 							},
 							C: {
-								type: Scratch.BlockType.STRING
+								type: Scratch.ArgumentType.STRING
 							}
 						}
 					},
@@ -31,7 +31,7 @@
 						text: "[A]",
 						arguments: {
 							A: {
-								type: Scratch.BlockType.STRING,
+								type: Scratch.ArgumentType.STRING,
 								menu: "trueFalse"
 							}
 						}
@@ -42,10 +42,10 @@
 						text: "[A] ^ [B]",
 						arguments: {
 							A: {
-								type: Scratch.BlockType.NUMBER
+								type: Scratch.ArgumentType.NUMBER
 							},
 							B: {
-								type: Scratch.BlockType.NUMBER
+								type: Scratch.ArgumentType.NUMBER
 							}
 						}
 					}
