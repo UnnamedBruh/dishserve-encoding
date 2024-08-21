@@ -129,7 +129,7 @@
 			return !(A ^ B)
 		}
 		xnor({A, B}) {
-			return A ^ B === 0
+			return (A ^ B) === 0
 		}
 	}
 	Scratch.extensions.register(new Extension())
