@@ -37,6 +37,59 @@
 						}
 					},
 					{
+						opcode: "nand",
+						blockType: Scratch.BlockType.BOOLEAN,
+						text: "[A] nand [B]",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.BOOLEAN
+							},
+							B: {
+								type: Scratch.ArgumentType.BOOLEAN
+							}
+						}
+					},
+					{
+						opcode: "nor",
+						blockType: Scratch.BlockType.BOOLEAN,
+						text: "[A] nor [B]",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.BOOLEAN
+							},
+							B: {
+								type: Scratch.ArgumentType.BOOLEAN
+							}
+						}
+					},
+					{
+						opcode: "xor",
+						blockType: Scratch.BlockType.BOOLEAN,
+						text: "[A] xor [B]",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.BOOLEAN
+							},
+							B: {
+								type: Scratch.ArgumentType.BOOLEAN
+							}
+						}
+					},
+					{
+						opcode: "xnor",
+						blockType: Scratch.BlockType.BOOLEAN,
+						text: "[A] xnor [B]",
+						arguments: {
+							A: {
+								type: Scratch.ArgumentType.BOOLEAN
+							},
+							B: {
+								type: Scratch.ArgumentType.BOOLEAN
+							}
+						}
+					},
+					'---',
+					{
 						opcode: "exponent",
 						blockType: Scratch.BlockType.REPORTER,
 						text: "[A] ^ [B]",
@@ -65,6 +118,18 @@
 		}
 		exponent({A, B}) {
 			return Math.pow(Scratch.Cast.toNumber(A), Scratch.Cast.toNumber(B))
+		}
+		nand({A, B}) {
+			return !(A && B)
+		}
+		nor({A, B}) {
+			return !(A || B)
+		}
+		xor({A, B}) {
+			return !(A ^ B)
+		}
+		xnor({A, B}) {
+			return A ^ B === 0
 		}
 	}
 	Scratch.extensions.register(new Extension())
