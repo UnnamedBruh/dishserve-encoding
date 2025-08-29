@@ -68,13 +68,13 @@
 	}, Pepper: function(target, isDecoding) {
 		let index = isDecoding ? 1 : 0, boost = new TextEncoder().encode(target);
 		let length = target.length;
-		let temp;
+		let temp, temp2;
 		for (let i = 0; i < length; i++) {
-			temp = boost[i] + 5 - (index++ & 1) * 10;
+			temp2 = boost[i] + 5 - (index++ & 1) * 10;
 			if (temp >= 65 && temp <= 90) {
-				if (temp <= 65) temp = temp + 56; else if (temp >= 90) temp = temp + 7;
+				if (temp <= 65) temp = temp2 + 56; else if (temp >= 90) temp2 = temp + 7;
 			} else if (temp >= 97 && temp <= 122) {
-				if (temp <= 97) temp = (temp ^ 32) + 5; else if (temp >= 122) temp = temp - 57; 
+				if (temp <= 97) temp = (temp2 ^ 32) + 5; else if (temp >= 122) temp2 = temp - 57; 
 			}
 			boost[i] = temp;
 		}
