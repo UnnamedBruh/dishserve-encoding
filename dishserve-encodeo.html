@@ -1,0 +1,109 @@
+<p>Welcome to a much more polished project where optimizations are prioritized, and efficient structures of outputs are prioritized.</p>
+<div>
+	<textarea id="encodetext" oninput="encode(this.value)"></textarea>
+	<br>
+	<input type="checkbox" oninput="options.encode = 0 + !this.checked" checked><a>Encode?</a>
+	<br>
+	<ul>
+		<li><input type="checkbox" id="pepper" oninput="options.Pepper = this.checked"><a>Pepper</a></li>
+		<li><input type="checkbox" oninput="options.Apple = this.checked"><a>Apple</a></li>
+		<li><input type="checkbox" oninput="options.Carrot = this.checked; var pep = document.getElementById('pepper'); pep.disabled = this.checked; pep.checked = false; options.Pepper = false"><a>Carrot</a></li>
+	</ul>
+</div>
+<div>
+	<pre id="result">result goes here</pre>
+</div>
+<script>
+	function isLetter(c) {
+		return (c >= 65 && c <= 90) || (c >= 97 && c <= 122);
+	}
+	const ingredients = {Carrot: function(target, isDecoding) {
+		let length = target.length;
+		let keys = Object.create(null);
+		let i = 0;
+		let temp;
+		if (isDecoding === 1) {
+			let lengthSub = length - 1;
+			for (; i < length; i += 2) {
+				if (target[i] === "@") break; else if (i < lengthSub) {
+					keys[target[i]] = keys[target[i + 1]];
+				} else {
+					alert("The decoding \"palette\" has an odd length, and a lack of terminator. Was the encoded sequence trimmed?");
+					i++;
+					break;
+				}
+			}
+			if (i >= length) return "";
+			i++;
+			let decodedSequence = new Array(encodedSequence.length - i);
+			let j = 0;
+			for (; i < length; i++, j++) {
+				temp = keys[target[i]];
+				if (temp) {
+					decodedSequence[j] = temp;
+				} else {
+					if (!confirm("Key '" + target[i] + "' has not been recognized. Continue anyway?")) break;
+				}
+			}
+			return (j < decodedSequence.length ? decodedSequence.slice(0, j) : decodedSequence).join('');
+		}
+		if (length === 0) return "";
+		let encodingSymbols = "\t !\"#$%&'()*+,-./0123456789:;<=>?ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+		if (length === 1) return encodingSymbols[0] + target + '@' + encodingSymbols[0];
+		let encodingStart = new Array(length);
+		let symbolsConsumed = 0;
+		let temp2;
+		let symbolMap = [];
+		for (; i < length; i++) {
+			temp2 = target[i];
+			temp = keys[temp2];
+			if (!temp) {
+				temp = (keys[temp2] = encodingSymbols[symbolsConsumed++]);
+				symbolMap.push(temp2, temp);
+			}
+			encodingStart[i] = temp;
+		}
+		symbolMap.push('@');
+		return symbolMap.join('') + encodingStart.join('');
+	}, Pepper: function(target, isDecoding) {
+		let index = isDecoding ? 1 : 0, boost = new TextEncoder().encode(target);
+		let length = target.length;
+		let temp;
+		for (let i = 0; i < length; i++) {
+			temp = boost[i] + 5 - (index++ & 1) * 10;
+			if (temp >= 65 && temp <= 90) {
+				if (temp <= 65) temp = temp + 56; else if (temp >= 90) temp = temp + 7;
+			} else if (temp >= 97 && temp <= 122) {
+				if (temp <= 97) temp = (temp ^ 32) + 5; else if (temp >= 122) temp = temp - 57; 
+			}
+			boost[i] = temp;
+		}
+		return new TextDecoder().decode(boost);
+	}, Apple: function(target) {
+		let length = target.length;
+		if (length <= 1) return target;
+		let boost = new TextEncoder().encode(target);
+		let wordStart = -1;
+		for (let i = 0; i < length; i++) {
+			if (isLetter(boost[i])) {
+				if (wordStart === -1) wordStart = i;
+			} else {
+				[boost[wordStart], boost[i]] = [boost[i], boost[wordStart]];
+				wordStart = -1;
+			}
+		}
+		if (wordStart !== -1) [boost[wordStart], boost[i]] = [boost[i], boost[wordStart]];
+		return new TextDecoder().decode(boost);
+	}};
+	const options = {Pepper: false, Apple: false, Carrot: false, encode: 0};
+	function encode(text) {
+		let result = text;
+		const cache = Object.keys(options);
+		for (const key of cache) {
+			if (key === "encode") {} else if (options[key]) {
+				result = ingredients[key](result, options.encode);
+			}
+		}
+		document.getElementById("result").textContent = result;
+	}
+</script>
