@@ -90,7 +90,7 @@
 			if (isLetter(boost[i])) {
 				if (wordStart === -1) wordStart = i;
 			} else {
-				[boost[wordStart], boost[i]] = [boost[i], boost[wordStart]];
+				if (wordStart !== -1) [boost[wordStart], boost[i - 1]] = [boost[i - 1], boost[wordStart]];
 				wordStart = -1;
 			}
 		}
