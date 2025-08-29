@@ -1,8 +1,8 @@
 (function() {
 	const answers = {
 		rock: {
-			choices: ["paper", "sheet", "boulder", "foil", "rag", "black hole", "lava", "volcano", "moss", "cutter"],
-			answers: ["Paper... covers rock. That line gives me memories.", "A sheet of paper covers rock as well as paper.", "A boulder is bigger than a rock, so... why not?", "Puh-lease, foil wraps around a rock with ease! Hey, that rhymes!", "A rag covers a rock! Just like paper!", "A black hole pulls in any matter heading toward it!", "Lava is made up of scorching-hot rock! But it does melt the rock.", "Throw a rock in a volcano, and what do you get? Melted rock.", "Moss covers the rock and gives it a grassy look. The rock doesn't mind. In fact, it's okay with everything, really.", "Sorry, but that doesn't beat rock."],
+			choices: ["paper", "sheet", "boulder", "foil", "rag", "black hole", "lava", "volcano", "moss", "cutter", "your mom", "your dad"],
+			answers: ["Paper... covers rock. That line gives me memories.", "A sheet of paper covers rock as well as paper.", "A boulder is bigger than a rock, so... why not?", "Puh-lease, foil wraps around a rock with ease! Hey, that rhymes!", "A rag covers a rock! Just like paper!", "A black hole pulls in any matter heading toward it!", "Lava is made up of scorching-hot rock! But it does melt the rock.", "Throw a rock in a volcano, and what do you get? Melted rock.", "Moss covers the rock and gives it a grassy look. The rock doesn't mind. In fact, it's okay with everything, really.", "Your mom walks out of her room, and throws the rock away from her yard! She says, \"That's been irritating me for too long! I always wanted to get a slightly-bigger picture of the bright lawn!\"", "Your dad walks out of his room, and picks up the rock. \"Hey, that must be the school project you worked on since kindergarten! Ah, the good times take me back to when I was a kid...\" The father feels a pang of nostalgia when he stares at the poorly-drawn face.", "Sorry, but that doesn't beat rock."],
 			wrongChoices: {
 				shotgun: "No gun can win against a rock, even if the bullet is shot at 80 MPH.",
 				nothing: "Nothing? Okay, how do I phrase this without... oh yeah! Nothing can't beat a rock, but anything can! Because if you have nothing to use, what's the point of trying to?",
@@ -22,14 +22,14 @@
 				"": "A blank text doesn't beat anything. It's just not an object.",
 				you: "Who is 'you'? Is that you playing the game, or someone else?",
 				vaporizer: "A vaporizer? That weapon doesn't exist yet!",
-				"your mom": "Oh, you did not just say that! That joke is... well, not as funny as it used to be.",
-				"yo mom": "You didn't just say that! These jokes aren't as funny now.",
-				zero: "A zero can't do anything but... exist! Its value is nothing in mathematics!"
+				zero: "A zero can't do anything but... exist! Its value is nothing in mathematics!",
+				no: "The top text is right! A blunt refusal can be dismissive in some contexts!",
+				yes: "Yes? What did we agree on? Wait... we didn't agree on anything!"
 			}
 		},
 		paper: {
-			choices: ["scissors", "fire", "pencil", "tear", "rip", "shotgun", "hook", "human", "flamethrower"],
-			answers: ["Scissors cuts paper. I don't know what to say here.", "Paper is flammable, so fire wins this round.", "A pencil can write on paper, so... yeah.", "Paper is weak, and it is tearable.", "Tears work, but rips also work as well.", "When a shotgun fires at a piece of paper, the bullets tear through the paper.", "A hook can be used to tear apart paper, because their edge is sharp.", "A person/human can rip and tear this paper with ease.", "A flamethrower can burn the paper into dust and ashes.", "That object can't beat paper. Sorry!"],
+			choices: ["scissors", "fire", "pencil", "tear", "rip", "shotgun", "hook", "human", "flamethrower", "your mom", "your dad"],
+			answers: ["Scissors cuts paper. I don't know what to say here.", "Paper is flammable, so fire wins this round.", "A pencil can write on paper, so... yeah.", "Paper is weak, and it is tearable.", "Tears work, but rips also work as well.", "When a shotgun fires at a piece of paper, the bullets tear through the paper.", "A hook can be used to tear apart paper, because their edge is sharp.", "A person/human can rip and tear this paper with ease.", "A flamethrower can burn the paper into dust and ashes.", "Your mom walks out of her room to tear the paper into pieces. She says, \"Why is a sheet laying on the table?\"", "Your dad walks out of his room to write a \"thank you\" note to his grandmother. \"Okay! I want you to pass this to my mother when I drive you to her house. Does that sound okay?\" He says and asks.", "That object can't beat paper. Sorry!"],
 			wrongChoices: {
 				you: "To be honest, who is 'you'? That's going to be one question to solve.",
 				"shrink ray": "Are you just trying to lose on purpose, or are you trying to cheese this game?",
