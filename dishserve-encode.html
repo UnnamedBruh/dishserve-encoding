@@ -48,7 +48,7 @@
 		let encodingStart = ""
 		let index = -1
 		let encodingSymbols = new Set(["@", "#", "$", "%", "^", "&", "*", "<", ">", "~", "|", "[", "]", "{", "}", "(", ")", ";", "\\", "/", "`", "-", "_", "+", "=",
-		"¢", "£", "¤", "¥", "¦", "§", "¨", "©", "«", "»", "¶", "·"].filter(item => !target.includes(item)))
+		"¢", "£", "¤", "¥", "¦", "§", "¨", "©", "«", "»", "¶", "·", ..."abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,!.?"].filter(item => !target.includes(item)))
 		let chosen = {}
 		let chosenLetters = new Set([])
 		let result = target.replace(/./g, function(item) {
