@@ -39,6 +39,7 @@
 			let decodedSequence = new Array(target.length - i);
 			let j = 0;
 			for (; i < length; i++, j++) {
+				console.log(target[i]);
 				temp = keys[target[i]];
 				if (temp) {
 					decodedSequence[j] = temp;
