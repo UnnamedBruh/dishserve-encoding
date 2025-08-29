@@ -26,15 +26,13 @@
 			let lengthSub = length - 1;
 			for (; i < length; i += 2) {
 				if (target[i] === "@") break; else if (i < lengthSub) {
-					keys[target[i + 1]] = keys[target[i]];
-					console.log(target[i + 1], "\t", target[i]);
+					keys[target[i + 1]] = target[i];
 				} else {
 					alert("The decoding \"palette\" has an odd length, and a lack of terminator. Was the encoded sequence trimmed?");
 					i++;
 					break;
 				}
 			}
-			console.log(keys);
 			if (i >= length) return "";
 			i++;
 			let decodedSequence = new Array(target.length - i);
