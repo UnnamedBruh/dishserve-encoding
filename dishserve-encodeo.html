@@ -26,7 +26,7 @@
 			let lengthSub = length - 1;
 			for (; i < length; i += 2) {
 				if (target[i] === "@") break; else if (i < lengthSub) {
-					keys[target[i]] = keys[target[i + 1]];
+					keys[target[i + 1]] = keys[target[i]];
 				} else {
 					alert("The decoding \"palette\" has an odd length, and a lack of terminator. Was the encoded sequence trimmed?");
 					i++;
@@ -42,7 +42,7 @@
 				if (temp) {
 					decodedSequence[j] = temp;
 				} else {
-					if (!confirm("Key '" + target[i] + "' has not been recognized. Continue anyway?")) break;
+					/*if (!confirm("Key '" + target[i] + "' has not been recognized. Continue anyway?"))*/ break;
 				}
 			}
 			return (j < decodedSequence.length ? decodedSequence.slice(0, j) : decodedSequence).join('');
