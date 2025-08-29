@@ -22,11 +22,12 @@
 		let keys = Object.create(null);
 		let i = 0;
 		let temp;
-		if (isDecoding === 1) {
+		if (isDecoding) {
 			let lengthSub = length - 1;
 			for (; i < length; i += 2) {
 				if (target[i] === "@") break; else if (i < lengthSub) {
 					keys[target[i + 1]] = keys[target[i]];
+					console.log(target[i + 1], "\t", target[i]);
 				} else {
 					alert("The decoding \"palette\" has an odd length, and a lack of terminator. Was the encoded sequence trimmed?");
 					i++;
@@ -48,7 +49,7 @@
 			return (j < decodedSequence.length ? decodedSequence.slice(0, j) : decodedSequence).join('');
 		}
 		if (length === 0) return "";
-		let encodingSymbols = "\t !\"#$%&'()*+,-./0123456789:;<=>?ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+		let encodingSymbols = " !\"#$%&'()*+,-./0123456789:;<=>?ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 		if (length === 1) return encodingSymbols[0] + target + '@' + encodingSymbols[0];
 		let encodingStart = new Array(length);
 		let symbolsConsumed = 0;
