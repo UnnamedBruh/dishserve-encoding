@@ -28,7 +28,7 @@
 				if (target[i] === "@") break; else if (i < lengthSub) {
 					keys[target[i + 1]] = target[i];
 				} else {
-					alert("The decoding \"palette\" has an odd length, and a lack of terminator. Was the encoded sequence trimmed?");
+					//alert("The decoding \"palette\" has an odd length, and a lack of terminator. Was the encoded sequence trimmed?");
 					i++;
 					break;
 				}
@@ -49,7 +49,7 @@
 			return (j < decodedSequence.length ? decodedSequence.slice(0, j) : decodedSequence).join('');
 		}
 		if (length === 0) return "";
-		let encodingSymbols = " !\"#$%&'()*+,-./0123456789:;<=>?ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+		let encodingSymbols = " !\"#$%&'()*+,-./0123456789:;<=>?ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ";
 		if (length === 1) return encodingSymbols[0] + target + '@' + encodingSymbols[0];
 		let encodingStart = new Array(length);
 		let symbolsConsumed = 0;
@@ -95,15 +95,17 @@
 				wordStart = -1;
 			}
 		}
-		if (wordStart !== -1) [boost[wordStart], boost[length - 1]] = [boost[i], boost[length - 1]];
+		if (wordStart !== -1) [boost[wordStart], boost[length - 1]] = [boost[length - 1], boost[wordStart]];
 		return new TextDecoder().decode(boost);
 	}};
 	const options = {Pepper: false, Apple: false, Carrot: false, encode: 0};
+	let encodingSequence2 = ["Apple", "Pepper", "Carrot"];
 	function encode(text) {
 		let result = text;
-		const cache = Object.keys(options);
-		for (const key of cache) {
-			if (key === "encode") {} else if (options[key]) {
+		let encodingSequence;
+		if (options.encode) encodingSequence = encodingSequence2.reverse(); else encodingSequence = encodingSequence2;
+		for (const key of encodingSequence) {
+			if (options[key]) {
 				result = ingredients[key](result, options.encode);
 			}
 		}
