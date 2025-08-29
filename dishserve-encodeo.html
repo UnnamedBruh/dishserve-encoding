@@ -35,7 +35,7 @@
 			}
 			if (i >= length) return "";
 			i++;
-			let decodedSequence = new Array(encodedSequence.length - i);
+			let decodedSequence = new Array(target.length - i);
 			let j = 0;
 			for (; i < length; i++, j++) {
 				temp = keys[target[i]];
@@ -94,7 +94,7 @@
 				wordStart = -1;
 			}
 		}
-		if (wordStart !== -1) [boost[wordStart], boost[i]] = [boost[i], boost[wordStart]];
+		if (wordStart !== -1) [boost[wordStart], boost[length - 1]] = [boost[i], boost[length - 1]];
 		return new TextDecoder().decode(boost);
 	}};
 	const options = {Pepper: false, Apple: false, Carrot: false, encode: 0};
