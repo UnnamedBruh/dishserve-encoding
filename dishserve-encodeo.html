@@ -6,6 +6,7 @@
 	<br>
 	<ul>
 		<li><input class="option" name="Apple" type="checkbox"/><a>Apple</a></li>
+		<li><input class="option" name="Banana" type="checkbox"/><a>Banana</a></li>
 		<li><input class="option" name="Carrot" type="checkbox"/><a>Carrot</a></li>
 		<li><input class="option" name="Pepper" type="checkbox"/><a>Pepper</a></li>
 	</ul>
@@ -16,7 +17,7 @@
 <script>
 	const area = document.getElementById("encodetext");
 	const checkboxes = document.querySelectorAll("input.option[type=\"checkbox\"]");
-	const options = {Pepper: false, Apple: false, Carrot: false, encode: 0};
+	const options = {Pepper: false, Apple: false, Banana: false, Carrot: false, encode: 0};
 	for (const box of checkboxes) {
 		box.oninput = () => {
 			options[box.name] = box.checked;
@@ -42,16 +43,18 @@
 					break;
 				}
 			}
+			let temp2;
 			if (i >= length) return "";
 			i++;
-			let decodedSequence = new Array(target.length - i);
+			let decodedSequence = new Array(length - i);
 			let j = 0;
 			for (; i < length; i++) {
-				temp = keys[target[i]];
+				temp2 = target[i];
+				temp = keys[temp2];
 				if (temp) {
 					decodedSequence[j] = temp;
 				} else {
-					/*if (!confirm("Key '" + target[i] + "' has not been recognized. Continue anyway?")) break;*/
+					decodedSequence[j] = temp2;
 				}
 				j++;
 			}
@@ -67,10 +70,8 @@
 		for (; i < length; i++) {
 			temp2 = target[i];
 			temp = keys[temp2];
-			if (!temp) {
-				temp = (keys[temp2] = encodingSymbols[symbolsConsumed++]);
-				symbolMap.push(temp2, temp);
-			}
+			if (!temp) temp = (keys[temp2] = encodingSymbols[symbolsConsumed++]);
+			if (temp && temp !== temp2) symbolMap.push(temp2, temp);
 			encodingStart[i] = temp;
 		}
 		symbolMap.push('@');
@@ -107,6 +108,10 @@
 		}
 		if (wordStart !== -1) [boost[wordStart], boost[length - 1]] = [boost[length - 1], boost[wordStart]];
 		return new TextDecoder().decode(boost);
+	}, Banana: function(target) {
+		let length = target.length;
+		let contents = Object.create(null);
+		
 	}};
 	let encodingSequence2 = ["Pepper", "Apple", "Carrot"];
 	function encode(text) {
