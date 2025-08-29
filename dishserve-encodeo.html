@@ -34,18 +34,19 @@
 					break;
 				}
 			}
+			console.log(keys);
 			if (i >= length) return "";
 			i++;
 			let decodedSequence = new Array(target.length - i);
 			let j = 0;
-			for (; i < length; i++, j++) {
-				console.log(target[i]);
+			for (; i < length; i++) {
 				temp = keys[target[i]];
 				if (temp) {
 					decodedSequence[j] = temp;
 				} else {
-					/*if (!confirm("Key '" + target[i] + "' has not been recognized. Continue anyway?"))*/ break;
+					/*if (!confirm("Key '" + target[i] + "' has not been recognized. Continue anyway?")) break;*/
 				}
+				j++;
 			}
 			return (j < decodedSequence.length ? decodedSequence.slice(0, j) : decodedSequence).join('');
 		}
