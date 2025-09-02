@@ -118,10 +118,11 @@
 		}
 	}};
 	let encodingSequence2 = ["Pepper", "Apple", "Carrot", "Banana"];
+	let encodingSequence = ["Banana", "Carrot", "Apple", "Pepper"];
 	function encode(text) {
 		let result = text;
-		let encodingSequence;
-		if (!options.encode) encodingSequence = [...encodingSequence2].reverse(); else encodingSequence = encodingSequence2;
+		let encodingSequence3;
+		if (options.encode) encodingSequence = encodingSequence2; else encodingSequence = encodingSequence3;
 		for (const key of encodingSequence) {
 			if (options[key]) {
 				result = ingredients[key](result, options.encode);
