@@ -108,12 +108,16 @@
 		}
 		if (wordStart !== -1) [boost[wordStart], boost[length - 1]] = [boost[length - 1], boost[wordStart]];
 		return new TextDecoder().decode(boost);
-	}, Banana: function(target) {
+	}, Banana: function(target, isDecoding) {
 		let length = target.length;
-		let contents = Object.create(null);
-		
+		try {
+			if (isDecoding) return atob(target);
+			else return btoa(target);
+		} catch {
+			return "";
+		}
 	}};
-	let encodingSequence2 = ["Pepper", "Apple", "Carrot"];
+	let encodingSequence2 = ["Pepper", "Apple", "Carrot", "Banana"];
 	function encode(text) {
 		let result = text;
 		let encodingSequence;
