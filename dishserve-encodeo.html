@@ -122,7 +122,7 @@
 	function encode(text) {
 		let result = text;
 		let encodingSequence3 = encodingSequence;
-		if (options.encode) encodingSequence = encodingSequence2; else encodingSequence = encodingSequence3;
+		if (!options.encode) encodingSequence = encodingSequence2; else encodingSequence = encodingSequence3;
 		for (const key of encodingSequence) {
 			if (options[key]) {
 				result = ingredients[key](result, options.encode);
